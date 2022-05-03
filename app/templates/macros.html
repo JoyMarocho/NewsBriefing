@@ -1,0 +1,29 @@
+{% macro displaySourceList(source_list) %}
+
+    {% for source in source_list %}
+        <div class="container">
+            <li>
+                <a href="{{source.url}}">{{ source.name| truncate(20) }}</a>
+                <p>{{ source.description }}</p>
+            </li>
+        </div>
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro displayArticleList(article_list) %}
+
+    {% for article in article_list %}
+        <div class="container news-card">
+            <img src="{{article.urlToImage}}" alt="news-image" class="img-responsive">
+            <li class="text-center">
+                <h2>{{ article.title }}</h2>
+                <p> Written by: {{ article.author }}</p>
+                <i>Published on: {{ article.publishedAt }}</i>
+                <p>{{ article.description }}</p>
+                <a href="{{article.url}}">Read article</a>
+            </li>
+        </div>
+    {% endfor %}
+
+{% endmacro %}
