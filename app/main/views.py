@@ -7,7 +7,7 @@ from ..requests import get_articles,get_sources,search_article
 @main.route('/')
 def index():
     sources = get_sources()
-    title = 'Home - Welcome to the best news catch-up online website'
+    title = 'Home - Welcome to the best news briefing online website'
 
     search_article = request.args.get('keyword')
 
