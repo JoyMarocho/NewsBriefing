@@ -63,3 +63,22 @@ def get_articles(source):
     articles_results.append(article_object)
 
     return articles_results
+
+def search_article(q):
+    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'
+    with rq.get(search_article_url.format(q,my_api_key))as data:
+        data = data.json()
+        search_article_list =data.get('articles')
+        search_articles_results = []
+        for article in search_article_list:
+            author = article.get('author')
+            title = article.get('title')
+            description = article.get('description')
+            url = article.get('url')
+            urlToImage = article.get('urlToImage')
+            publishedAt = article.get('publishedAt')
+
+    search_article_object = Article(author,title,description,url,urlToImage,publishedAt)
+    search_articles_results.append(search_article_object)
+
+    return search_articles_results
