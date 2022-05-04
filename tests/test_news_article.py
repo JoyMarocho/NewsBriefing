@@ -6,7 +6,7 @@ class TestArticle(unittest.TestCase):
     
     def setUp(self):
 
-        self.new_article = Article('reuters','Delta variant','The resurgence of the covid-19 pandemic','https://www.reuters.com/business/delta-variant/','https://www.reuters.com/resizer/-XuHVthViVkR3PtRLNdEZi1X1qI=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/7O7MCYQ3P5IQVBKLFOFPD74GJE.jpg','2021-08-23T10:12:00Z')
+        self.new_article = Article('BeauHD','Microsoft Edge Overtakes Safari As Worlds Second Most Popular Desktop Browser','Microsoft Edge has overtaken Apples Safari to become the worlds second most popular desktop browser, based on data provided by web analytics service StatCounter. MacRumors reports: According to the data, Microsoft Edge is now used on 10.07 percent of deskto…','https://tech.slashdot.org/story/22/05/03/2145233/microsoft-edge-overtakes-safari-as-worlds-second-most-popular-desktop-browser','https://a.fsdn.com/sd/topics/internet_64.png','2022-05-04T01:30:00Z')
 
     
     def test_instance(self):
@@ -14,9 +14,9 @@ class TestArticle(unittest.TestCase):
 
     
     def test_init(self):
-        self.assertEqual(self.new_article.author,'reuters')
-        self.assertEqual(self.new_article.title,'Delta variant')
-        self.assertEqual(self.new_article.description,'The resurgence of the covid-19 pandemic')
-        self.assertEqual(self.new_article.url,'https://www.reuters.com/business/delta-variant/')
-        self.assertEqual(self.new_article.image,'https://www.reuters.com/resizer/-XuHVthViVkR3PtRLNdEZi1X1qI=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/7O7MCYQ3P5IQVBKLFOFPD74GJE.jpg')
-        self.assertEqual(self.new_article.publish_date,'2021-08-23T10:12:00Z')
+        self.assertEqual(self.new_article.author,'BeauHD')
+        self.assertEqual(self.new_article.title,'Microsoft Edge Overtakes Safari As Worlds Second Most Popular Desktop Browser')
+        self.assertEqual(self.new_article.description,'Microsoft Edge has overtaken Apples Safari to become the worlds second most popular desktop browser, based on data provided by web analytics service StatCounter. MacRumors reports: According to the data, Microsoft Edge is now used on 10.07 percent of deskto…')
+        self.assertEqual(self.new_article.url,'https://tech.slashdot.org/story/22/05/03/2145233/microsoft-edge-overtakes-safari-as-worlds-second-most-popular-desktop-browser')
+        self.assertEqual(self.new_article.image,'https://a.fsdn.com/sd/topics/internet_64.png")
+        self.assertEqual(self.new_article.publish_date,'22022-05-04T01:30:00Z')

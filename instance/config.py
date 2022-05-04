@@ -1,0 +1,2 @@
+API_KEY = '3e35279349f046e18dbea3dbccc18fb9'
+SECRET_KEY= 'JOY'
