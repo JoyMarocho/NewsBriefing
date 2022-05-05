@@ -2,7 +2,6 @@ from flask import render_template,request,redirect,url_for
 from . import main
 from ..requests import get_articles,get_sources,search_article
 
-
 #Views
 @main.route('/')
 def index():

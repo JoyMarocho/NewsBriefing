@@ -1,4 +1,5 @@
-import requests as rq,json
+import urllib.request 
+import json
 from .models import Source,Article
 
 
@@ -18,24 +19,65 @@ def configure_request(app):
     article_url = app.config['ARTICLE_URL']
 
 
+# def get_sources():
+#     '''
+#     Function that requests for data of all news sources.
+#     '''
+#     get_sources_url = base_url.format(my_api_key)
+#     source_results = [] 
+#     with urllib.request.urlopen(get_sources_url) as data:
+#         data = json.load()
+#         source_list = data.get('sources')
+#         source_results = []
+#         for source in source_list:
+#             id = source.get('id')
+#             name = source.get('name')
+#             description = source.get('description')
+#             url = source.get('url')
+#             language = source.get('language')
+
+#             source_object = Source(id,name,description,url,language)
+#             source_results.append(source_object)
+#     return source_results
+
+
 def get_sources():
     '''
-    Function that requests for data of all news sources.
+    Function that gets the json response to our url request
     '''
-    with rq.get(base_url.format(my_api_key)) as data:
-        data = data.json()
-        source_list = data.get('sources')
-        source_results = []
-        for source in source_list:
-            id = source.get('id')
-            name = source.get('name')
-            description = source.get('description')
-            url = source.get('url')
-            language = source.get('language')
+    get_sources_url = base_url.format(my_api_key)
+    sources_results = []
+    try:
+        with urllib.request.urlopen(get_sources_url) as response:
+            if response.status == 200:
+                data_ = response.read()
+                response_ = json.loads(data_)
+                sources_ = response_.get('sources')
+                sources_results = process_sources(sources_)
+    except urllib.error.URLError as e:
+        print("HTTP ERROR: ", e)
+    return sources_results
 
-            source_object = Source(id,name,description,url,language)
-            source_results.append(source_object)
-    return source_results
+def process_sources(sources_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+    Args:
+        movie_list: A list of dictionaries that contain movie details
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    sources = []
+    for source in sources_list:
+        id_ = source.get('id')
+        name = source.get('name')
+        description = source.get('description')
+        url = source.get('url')
+        
+        language = source.get('language')
+        source_object = Source(id_,name,description,url,language,)
+        sources.append(source)
+    return sources
+
 
 def get_articles(source):
     '''
