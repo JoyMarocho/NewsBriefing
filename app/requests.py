@@ -19,28 +19,6 @@ def configure_request(app):
     article_url = app.config['ARTICLE_URL']
 
 
-# def get_sources():
-#     '''
-#     Function that requests for data of all news sources.
-#     '''
-#     get_sources_url = base_url.format(my_api_key)
-#     source_results = [] 
-#     with urllib.request.urlopen(get_sources_url) as data:
-#         data = json.load()
-#         source_list = data.get('sources')
-#         source_results = []
-#         for source in source_list:
-#             id = source.get('id')
-#             name = source.get('name')
-#             description = source.get('description')
-#             url = source.get('url')
-#             language = source.get('language')
-
-#             source_object = Source(id,name,description,url,language)
-#             source_results.append(source_object)
-#     return source_results
-
-
 def get_sources():
     '''
     Function that gets the json response to our url request
@@ -78,7 +56,6 @@ def process_sources(sources_list):
         sources.append(source)
     return sources
 
-
 def get_articles(source):
     '''
     Function that gets a list of articles from a particular source
@@ -106,6 +83,7 @@ def get_articles(source):
 
     return articles_results
 
+
 def search_article(q):
     search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'
     with rq.get(search_article_url.format(q,my_api_key))as data:
@@ -124,3 +102,77 @@ def search_article(q):
     search_articles_results.append(search_article_object)
 
     return search_articles_results
+
+
+
+# def get_articles(source):
+#     '''
+#     Function that gets a list of articles from a particular source
+#     Args: 
+#         source_id: The id of a specific result.
+#     Returns:
+#         article_results: list of news articles in the specific news source.
+#     '''
+
+#     with urllib.get(article_url.format(source,my_api_key))as data:
+#         data = data.json()
+#         article_list =data.get('articles')
+#         articles_results = []
+#         for article in article_list:
+#             author = article.get('author')
+#             title = article.get('title')
+#             description = article.get('description')
+#             url = article.get('url')
+#             urlToImage = article.get('urlToImage')
+#             publishedAt = article.get('publishedAt')
+
+#     article_object = Article(author,title,description,url,urlToImage,publishedAt)
+#     articles_results.append(article_object)
+
+#     return articles_results
+
+# def search_article(q):
+#     search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'
+#     with urllib.get(search_article_url.format(q,my_api_key))as data:
+#         data = data.json()
+#         search_article_list =data.get('articles')
+#         search_articles_results = []
+#         for article in search_article_list:
+#             author = article.get('author')
+#             title = article.get('title')
+#             description = article.get('description')
+#             url = article.get('url')
+#             urlToImage = article.get('urlToImage')
+#             publishedAt = article.get('publishedAt')
+
+#     search_article_object = Article(author,title,description,url,urlToImage,publishedAt)
+#     search_articles_results.append(search_article_object)
+
+#     return search_articles_results
+
+
+
+
+
+# def get_sources():
+#     '''
+#     Function that requests for data of all news sources.
+#     '''
+#     get_sources_url = base_url.format(my_api_key)
+#     source_results = [] 
+#     with urllib.request.urlopen(get_sources_url) as data:
+#         data = json.load()
+#         source_list = data.get('sources')
+#         source_results = []
+#         for source in source_list:
+#             id = source.get('id')
+#             name = source.get('name')
+#             description = source.get('description')
+#             url = source.get('url')
+#             language = source.get('language')
+
+#             source_object = Source(id,name,description,url,language)
+#             source_results.append(source_object)
+#     return source_results
+
+
